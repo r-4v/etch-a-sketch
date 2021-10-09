@@ -59,11 +59,13 @@ function colorChanger(e){
 function changeGridSize(e){
     gridContainer.innerHTML='';
     gridSize = prompt("enter grid size: max 100 ");
+    if(!gridSize) gridSize =20;
     gridSize > 100 ? gridSize = 100 : gridSize;
     createGrid(gridSize);
     
 }
 function createGrid(gridSize){
+    console.log(gridSize);
     gridContainer.setAttribute('style',`grid-template-columns: repeat(${gridSize},1fr) ; grid-template-rows: repeat(${gridSize},1fr)`);
     for(let i = 1 ; i <= gridSize*gridSize ; i++){
        let gridItem =  document.createElement('div');
