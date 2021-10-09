@@ -4,6 +4,7 @@
     /*background-color:grey;*/
     border: 1px solid black;
     display:grid;
+    background-color: white;
     
 }
 #main-div{
@@ -11,20 +12,36 @@
     /*background-color:white;*/
     justify-content: center;
     align-items: center;
-    flex:1;
+    
     height:100vh;
 
 }
 body{
     display:flex;
-    background-color: white;
+    flex-wrap:wrap;
+    background-color: rgb(230,230,230);
 }
-#grid-size{
-    margin-right:100px;
-    background-color: honeydew;
+#option-pane{
+    display:flex;
+    flex-direction: column;
+    margin-right:150px;
+    margin-left:150px;
+    margin-top:80px;
+}
+#option-pane button{
+    margin-top: 25px;
+    /*background-color: honeydew;*/
     padding:25px;
+    border-radius: 10px;
 }
 .grid-item{
-    border: 1px solid rgba(0,0,0,0.2);
+    /*border: 1px solid rgba(0,0,0,0.2);*/
     
+}
+.name{
+    margin-left:150px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
