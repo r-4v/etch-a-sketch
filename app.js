@@ -13,7 +13,7 @@ let paintType = "black";
 let currentColor;
 let currentMode = "hover";
 etchSketch();
-//event listening
+// sketch starter and selector functions
 function etchSketch() {
   gridSize = 20;
   createGrid(gridSize);
@@ -35,10 +35,11 @@ function modeChanger(e) {
     gridItemSelectAndListen();
   } else if (e.target.id === "hover") {
     currentMode = "hover";
-    console.log("hover");
     gridItemSelectAndListen();
   }
 }
+
+//grid modification and event listener functions
 
 function clearEventListeners() {
   let gridItems = document.querySelectorAll(".grid-item");
@@ -50,31 +51,6 @@ function clearEventListeners() {
 function resetGrid() {
   gridContainer.innerHTML = "";
   createGrid(gridSize);
-}
-
-function colorChanger(e) {
-  if (e.target.id === "rainbow-sketch") {
-    paintType = "rainbow";
-  } else if (e.target.id === "pastel-sketch") {
-    paintType = "pastel";
-  } else if (e.target.id === "random-sketch") {
-    paintType = "random";
-    let colorArray = randomColorGenerator();
-    currentColor = `rgb(${colorArray[0]},${colorArray[1]},${colorArray[2]})`;
-  } else if (e.target.id === "black-sketch") {
-    paintType = "black";
-  } else if (e.target.id === "eraser") {
-    paintType = "eraser";
-  }
-}
-
-function randomColorGenerator() {
-  let colorArray = [];
-  let red = randomGenerator(255);
-  let blue = randomGenerator(255);
-  let green = randomGenerator(255);
-  colorArray.push(red,green,blue);
-  return colorArray;
 }
 
 function changeGridSize(e) {
@@ -106,11 +82,29 @@ function gridItemSelectAndListen() {
   });
 }
 
+//color decision and painter functions
+
 function paintgridItem(e) {
   if (e.buttons == 1 && currentMode === "clicker") {
     paint(e);
   } else if (currentMode === "hover") {
     paint(e);
+  }
+}
+
+function colorChanger(e) {
+  if (e.target.id === "rainbow-sketch") {
+    paintType = "rainbow";
+  } else if (e.target.id === "pastel-sketch") {
+    paintType = "pastel";
+  } else if (e.target.id === "random-sketch") {
+    paintType = "random";
+    let colorArray = randomColorGenerator();
+    currentColor = `rgb(${colorArray[0]},${colorArray[1]},${colorArray[2]})`;
+  } else if (e.target.id === "black-sketch") {
+    paintType = "black";
+  } else if (e.target.id === "eraser") {
+    paintType = "eraser";
   }
 }
 
@@ -136,12 +130,22 @@ function paint(e) {
       `style`,
       `background-color: rgba(${colorArray[0]},${colorArray[1]},${colorArray[2]},${alpha});`);
   } else if (paintType === "random") {
-    
+
     e.target.setAttribute(`style`, `background-color:${currentColor}`);
   }
 }
+
+//helper functions
 
 function randomGenerator(num1, num2 = 0) {
   return Math.floor(Math.random() * (num1 - num2));
 }
 
+function randomColorGenerator() {
+  let colorArray = [];
+  let red = randomGenerator(255);
+  let blue = randomGenerator(255);
+  let green = randomGenerator(255);
+  colorArray.push(red, green, blue);
+  return colorArray;
+}
