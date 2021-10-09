@@ -1,0 +1,30 @@
+.grid-container{
+    height:600px;
+    width:600px;
+    /*background-color:grey;*/
+    border: 1px solid black;
+    display:grid;
+    
+}
+#main-div{
+    display:flex;
+    /*background-color:white;*/
+    justify-content: center;
+    align-items: center;
+    flex:1;
+    height:100vh;
+
+}
+body{
+    display:flex;
+    background-color: white;
+}
+#grid-size{
+    margin-right:100px;
+    background-color: honeydew;
+    padding:25px;
+}
+.grid-item{
+    border: 1px solid rgba(0,0,0,0.2);
+    
+}
